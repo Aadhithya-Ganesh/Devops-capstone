@@ -1,0 +1,22 @@
+services:
+  backend:
+    build: ./backend
+    image: aadhithya123/backend:latest
+    container_name: backend
+    ports:
+      - "8080:8080"
+    networks:
+      - frontend
+      - backend
+  frontend:
+    build: ./frontend
+    image: aadhithya123/frontend:latest
+    container_name: frontend
+    ports:
+      - "80:80"
+    networks:
+      - frontend
+
+networks:
+  backend:
+  frontend:
