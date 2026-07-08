@@ -1,7 +1,7 @@
 services:
   backend:
     build: ./backend
-    image: aadhithya123/backend:latest
+    image: aadhithya123/backend:${TAG:-latest}
     container_name: backend
     ports:
       - "8080:8080"
@@ -10,7 +10,7 @@ services:
       - backend
   frontend:
     build: ./frontend
-    image: aadhithya123/frontend:latest
+    image: aadhithya123/frontend:${TAG:-latest}
     container_name: frontend
     ports:
       - "80:80"

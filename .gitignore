@@ -1,1 +1,13 @@
 .vscode
+
+# secrets / credentials
+*.pem
+*.key
+*.csv
+
+# terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+
