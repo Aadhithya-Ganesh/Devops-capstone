@@ -194,3 +194,21 @@
     - name: Run join command
       ansible.builtin.command: bash /tmp/join_command.sh
       when: not kubelet_conf_check.stat.exists
+
+- name: Install ArgoCD
+  hosts: control-plane
+  become: false
+
+  tasks:
+    - name: Create argocd namespace
+      ansible.builtin.command: kubectl create namespace argocd
+      register: create_ns
+      failed_when:
+        - create_ns.rc != 0
+        - '"already exists" not in create_ns.stderr'
+
+    - name: Apply ArgoCD manifests
+      ansible.builtin.command: kubectl apply -n argocd --server-side --force-conflicts -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+    - name: Wait for ArgoCD pods to be ready
+      ansible.builtin.command: kubectl wait --for=condition=Ready pods --all -n argocd --timeout=120s
