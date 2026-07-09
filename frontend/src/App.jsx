@@ -5,12 +5,9 @@ function App() {
 
   const makeRequest = async () => {
     try {
-      const response = await fetch(
-        `http://${import.meta.env.VITE_GATEWAY}/api/hello`,
-        {
-          method: "GET",
-        },
-      );
+      const response = await fetch(`/api/hello`, {
+        method: "GET",
+      });
 
       if (!response.ok) {
         throw new Error("Request failed");
