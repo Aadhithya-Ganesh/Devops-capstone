@@ -21,7 +21,7 @@ spec:
         io.kompose.service: frontend
     spec:
       containers:
-        - image: aadhithya123/frontend:465144a644d67262d888f5ab41e5fe6f2b737d52
+        - image: aadhithya123/frontend:b93ae73b53a901b6f2af6ebef8aabc036acda641
           name: frontend
           ports:
             - containerPort: 80

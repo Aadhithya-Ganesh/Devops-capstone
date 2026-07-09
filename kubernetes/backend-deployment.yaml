@@ -21,7 +21,7 @@ spec:
         io.kompose.service: backend
     spec:
       containers:
-        - image: aadhithya123/backend:465144a644d67262d888f5ab41e5fe6f2b737d52
+        - image: aadhithya123/backend:b93ae73b53a901b6f2af6ebef8aabc036acda641
           name: backend
           ports:
             - containerPort: 8080
